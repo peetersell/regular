@@ -25,7 +25,7 @@ try {
     Invoke-WebRequest -Uri $downl_url -OutFile c:\windows\temp\ms_edge_beta.msi
 }
 catch {
-    handle_error $error[0].InvocationInfo.line $error[0].exception.message 
+    handle_error ($error.InvocationInfo.line | select-object -first 1) ($error.exception.message | select-object -first 1)
 }
 
 # get the download url for edge msi
